@@ -213,7 +213,7 @@ function gameLogic(player, map, point) {
 function draw(map, ctx){
 
     fillGrid(map, ctx); //color
-    //drawGrid(map, ctx); //gridlines
+    drawGrid(map, ctx); //gridlines
 }
 
 //color, renders background of grid
