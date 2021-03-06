@@ -85,15 +85,15 @@ class Tile{
         this.pointOccupation = false; //is a point occupying tile
     }
 
-    setOccupied(occupation){
+    set setOccupied(occupation){
         this.occupied = occupation;
     }
 
-    setPlayerOccupation(occupation){
+    set setPlayerOccupation(occupation){
         this.playerOccupation = occupation;
     }
 
-    setPointOccupation(occupation){
+    set setPointOccupation(occupation){
         this.pointOccupation = occupation;
     }
 

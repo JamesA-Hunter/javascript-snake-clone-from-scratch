@@ -35,9 +35,9 @@ function initializeGame(){
     point = new Score(placePoint(map));
 
     //sets matching x and y inside player object
-    player.setXPos(map.getSpecificTile(player.getPosition).getXPos);
-    player.setYPos(map.getSpecificTile(player.getPosition).getYPos);
-    player.setLastPosition(map.searchTiles(player.getXPos, player.getYPos));
+    player.setXPos = map.getSpecificTile(player.getPosition).getXPos;
+    player.setYPos = map.getSpecificTile(player.getPosition).getYPos;
+    player.setLastPosition = map.searchTiles(player.getXPos, player.getYPos);
     //adds starting tile to stack
     player.processStack(map.getSpecificTile(player.getPosition));
 
@@ -48,7 +48,7 @@ function initializeGame(){
 
     //listens for keys and sets player direction based on arrow keys (see player.js setDirecton())
     window.addEventListener("keydown", function(e){
-        player.setDirection(e);
+        player.setDirection = e;
     });
 
     //while(player.getStatus = true){
@@ -65,30 +65,30 @@ function placePlayer(map){
     
     let i = Math.floor((Math.random() * map.getGridLength));
     let positionSet = map.getSpecificTile(i);
-    positionSet.setOccupied(true);
+    positionSet.setOccupied = true;
     return i;
 }
 
 function placePoint(map){
     let i = Math.floor((Math.random() * map.getGridLength));
     let positionSet = map.getSpecificTile(i);
-    positionSet.setPointOccupation(true);
+    positionSet.setPointOccupation = true;
     return i;
 }
 
 //moves player in the direction that the player was set
 function movePlayer(player){
     if (player.getDirection == 0){ // north
-        player.setYPos(player.getYPos-= 1);
+        player.setYPos = player.getYPos-= 1;
     }
     if (player.getDirection == 1){ // east
-        player.setXPos(player.getXPos+= 1);
+        player.setXPos = player.getXPos+= 1;
     }
     if (player.getDirection == 2){ // south
-        player.setYPos(player.getYPos+= 1);
+        player.setYPos = player.getYPos+= 1;
     }
     if (player.getDirection == 3){ // west
-        player.setXPos(player.getXPos-= 1);
+        player.setXPos = player.getXPos-= 1;
     }
 }
 
@@ -103,7 +103,7 @@ function isPointScored(player, point){
 function clearLast(player, lastPosition, map){
 
     tile = map.getSpecificTile(lastPosition);
-    tile.setOccupied(false);
+    tile.setOccupied = false;
 
 }
 
@@ -126,26 +126,26 @@ function occupyNext(player, map){
     }
 
     try{
-    tile.setOccupied(true);
+    tile.setOccupied = true;
     }
     catch(err){
         end = true;
     }
 
-    player.setPosition(index); //sets player position to tile index
+    player.setPosition = index; //sets player position to tile index
     player.processStack(tile);
     player.cloneStack();
 
     try{
     for(i = 0;i < player.size + 1 ; i++){
 
-        let oTile = player.clearStackQueue.pop();
-        oTile.setOccupied(false);
+        let oTile = player.getClearStackQueuePop;
+        oTile.setOccupied = false;
     }
 
     for(i = 0;i < player.size; i++){
-        let oTile = player.stackQueue.pop();
-        oTile.setOccupied(true);
+        let oTile = player.getStackQueuePop;
+        oTile.setOccupied = true;
         
     }
     }
@@ -193,8 +193,8 @@ function gameLogic(player, map, point) {
     //finds tile the player is occupying
     let index = map.searchTiles(playerX, playerY); //returns matching index
     if(scored == true){
-        map.getSpecificTile(index).setPointOccupation(false);
-        point.setPosition(placePoint(map));
+        map.getSpecificTile(index).setPointOccupation = false;
+        point.setPosition = placePoint(map);
         player.size += 1;
         score += 1;
         if(score % 10 == 0){
@@ -204,7 +204,7 @@ function gameLogic(player, map, point) {
         htmlScore.innerHTML = "Score: " + score;
     }
     movePlayer(player);
-    player.setLastPosition(index); //sets last position of player
+    player.setLastPosition = index; //sets last position of player
     occupyNext(player, map);
     player.emptyCloneStack();
 }

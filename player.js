@@ -12,21 +12,6 @@ class Player {
         this.clearStackQueue = [];
     }
 
-    setDirection(Event){
-        if(Event.code === "ArrowUp"){ // north
-            this.direction = 0;
-        }
-        else if(Event.code === "ArrowRight"){ // east
-            this.direction = 1;
-        }
-        else if(Event.code === "ArrowDown"){ // south
-            this.direction = 2;
-        }
-        else if(Event.code === "ArrowLeft"){ // west
-            this.direction = 3;
-        }
-    }
-
     processStack(tile){
 
  
@@ -49,24 +34,39 @@ class Player {
     emptyCloneStack(){
         this.stackQueue = [];
     }
+
+    set setDirection(Event){
+        if(Event.code === "ArrowUp"){ // north
+            this.direction = 0;
+        }
+        else if(Event.code === "ArrowRight"){ // east
+            this.direction = 1;
+        }
+        else if(Event.code === "ArrowDown"){ // south
+            this.direction = 2;
+        }
+        else if(Event.code === "ArrowLeft"){ // west
+            this.direction = 3;
+        }
+    }
     
-    setScore(point){
+    set setScore(point){
         this.score += point;
     }
 
-    setXPos(x){
+    set setXPos(x){
         this.xPos = x;
     }
 
-    setYPos(y){
+    set setYPos(y){
         this.yPos = y;
     }
 
-    setLastPosition(position){
+    set setLastPosition(position){
         this.lastPosition = position;
     }
 
-    setPosition(position){
+    set setPosition(position){
         this.position = position;
     }
 
@@ -97,6 +97,14 @@ class Player {
     get getLastPosition(){
         return this.lastPosition;
     }
+
+    get getClearStackQueuePop(){
+        return this.clearStackQueue.pop();
+    }
+
+    get getStackQueuePop(){
+        return this.stackQueue.pop();
+    }
 }
 
 class Score{
@@ -104,7 +112,7 @@ class Score{
         this.position = position;
     }
 
-    setPosition(position){
+    set setPosition(position){
         this.position = position;
     }
 
