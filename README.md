@@ -11,9 +11,10 @@ try it here: https://jamesa-hunter.github.io/javascript-snake-clone-from-scratch
 
 # issues
 - rendering the scene is very very unoptimized and could be improved
-	by only redrawing the player instead of the grid
+	by only redrawing the player instead of the entire grid
 
 ## to do
 - add restart function
 - calculate big o' cost of game logic()
 - add styling to index.html
+- add proper use of getters and setters
