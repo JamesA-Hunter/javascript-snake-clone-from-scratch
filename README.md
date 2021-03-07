@@ -17,4 +17,5 @@ try it here: https://jamesa-hunter.github.io/javascript-snake-clone-from-scratch
 - add restart function
 - calculate big o' cost of game logic()
 - add styling to index.html
-- add proper use of getters and setters
+- rework rendering system:
+	requires major changes to drawgrid() and fillGrid()
