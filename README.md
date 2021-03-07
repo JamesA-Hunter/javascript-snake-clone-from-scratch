@@ -14,7 +14,6 @@ try it here: https://jamesa-hunter.github.io/javascript-snake-clone-from-scratch
 	by only redrawing the player instead of the entire grid
 
 ## to do
-- add restart function
 - calculate big o' cost of game logic()
 - add styling to index.html
 - rework rendering system:
