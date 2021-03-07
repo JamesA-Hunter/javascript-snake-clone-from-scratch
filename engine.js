@@ -1,5 +1,5 @@
 let point = null;
-let score = null;
+let score = 0;
 let end = false;
 let reset = false;
 let levelUp = false;
@@ -10,7 +10,6 @@ function initializeGame(){
 
     let form = document.getElementById("parameters");
     form.style.display = "none";
-
     htmlScore = document.getElementById("score");
     let board = document.getElementById("board"); //canvas id
     let rowWidth = document.getElementById("gameWidth").value; //how many tiles wide
@@ -58,6 +57,20 @@ function initializeGame(){
 
 function endGame(){
     end = true;
+}
+
+function restartGame(){
+    endGame();
+    reset = true;
+}
+
+function clearGame(){
+    point = null;
+    score = 0;
+    end = false;
+    reset = false;
+    levelUp = false;
+    htmlScore = 0;
 }
 
 //chooses a random tile to place the player at the beginning of the game
@@ -168,6 +181,12 @@ function gameLoop(player, map, ctx, point){
         clearInterval(sGame);
     }
 
+    if(reset == true){
+        clearInterval(sGame);
+        clearGame();
+        initializeGame();
+    }
+
     if(levelUp == true && level == 1){
         clearInterval(sGame);
         speed -= 100;
@@ -179,7 +198,7 @@ function gameLoop(player, map, ctx, point){
         speed -= 100;
         sGame = setInterval(game, speed);
     }
-    }
+}
 }
 
 //handles logic
