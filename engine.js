@@ -122,7 +122,7 @@ function clearLast(player, lastPosition, map){
 
 //finds the current tile that the player is in and sets it to occupied
 //try/catch ends game if player goes out of bounds
-function occupyNext(player, map){
+function occupyNext(player, map, ctx){
 
     let playerX = player.getXPos;
     let playerY = player.getYPos;
@@ -154,17 +154,20 @@ function occupyNext(player, map){
 
         let oTile = player.getClearStackQueuePop;
         oTile.setOccupied = false;
+        drawPlayer(oTile, ctx);
     }
 
     for(i = 0;i < player.size; i++){
         let oTile = player.getStackQueuePop;
         oTile.setOccupied = true;
+        drawPlayer(oTile, ctx);
         
     }
     }
     catch(err){
         end = true;
     }
+
 }
 
 //starts loop
@@ -173,10 +176,11 @@ function gameLoop(player, map, ctx, point){
     let level = 1;
     let speed = 700;
     let sGame = setInterval(game, speed);
+    draw(map, ctx);
     function game(){
 
-    gameLogic(player, map, point); //process game logic
-    draw(map, ctx); //render scene
+    gameLogic(player, map, point, ctx); //process game logic
+    //draw(map, ctx); //render scene
     if(end == true){
         clearInterval(sGame);
     }
@@ -202,7 +206,7 @@ function gameLoop(player, map, ctx, point){
 }
 
 //handles logic
-function gameLogic(player, map, point) {
+function gameLogic(player, map, point, ctx) {
 
     //check player direction
     let playerX = player.getXPos;
@@ -214,6 +218,7 @@ function gameLogic(player, map, point) {
     if(scored == true){
         map.getSpecificTile(index).setPointOccupation = false;
         point.setPosition = placePoint(map);
+        drawPoint(map.getSpecificTile(point.getPosition), ctx);
         player.size += 1;
         score += 1;
         if(score % 10 == 0){
@@ -224,7 +229,7 @@ function gameLogic(player, map, point) {
     }
     movePlayer(player);
     player.setLastPosition = index; //sets last position of player
-    occupyNext(player, map);
+    occupyNext(player, map, ctx);
     player.emptyCloneStack();
 }
 
@@ -235,7 +240,7 @@ function draw(map, ctx){
     drawGrid(map, ctx); //gridlines
 }
 
-//color, renders background of grid
+//color, renders background of grid -> runs once
 function fillGrid(map, ctx){
     let xHeader = 0;
     let yHeader = 0;
@@ -279,7 +284,7 @@ function fillGrid(map, ctx){
     }
 }
 
-//gridlines is a copy of fillGrid to render gridlines
+//gridlines is a copy of fillGrid to render gridlines -> runs once
 function drawGrid(map, ctx){
     let xHeader = 0;
     let yHeader = 0;
@@ -305,4 +310,50 @@ function drawGrid(map, ctx){
             xHeader += width;
         }
     }
+}
+
+//draws only the player each cycle
+function drawPlayer(tile, ctx){
+
+    let x = tile.getXPos * tile.getWidth;
+    let y = tile.getYPos * tile.getHeight;
+
+    ctx.moveTo(x, y);
+    ctx.beginPath();
+
+        //if player is in tile
+        if(tile.getOccupation == true){
+            ctx.fillStyle = "red";
+            ctx.fillRect(x, y, tile.getWidth, tile.getHeight);
+        //if tile is a point
+        } else if(tile.getPointOccupation == true){
+            ctx.fillStyle = "yellow";
+            ctx.fillRect(x, y, tile.getWidth, tile.getHeight);
+        //if tile is not occupied
+        } else if(tile.getOccupation == false && tile.getPointOccupation == false){
+            ctx.fillStyle = "green";
+            ctx.fillRect(x, y, tile.getWidth, tile.getHeight);
+        }
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.rect(x, y, tile.getWidth, tile.getHeight);
+        ctx.stroke();
+}
+
+//draws a new point every time player scores a point
+function drawPoint(tile, ctx){
+
+    let x = tile.getXPos * tile.getWidth;
+    let y = tile.getYPos * tile.getHeight;
+
+    ctx.moveTo(x, y);
+    ctx.beginPath();
+
+    ctx.fillStyle = "yellow";
+    ctx.fillRect(x, y, tile.getWidth, tile.getHeight);
+
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.rect(x, y, tile.getWidth, tile.getHeight);
+    ctx.stroke();
 }
