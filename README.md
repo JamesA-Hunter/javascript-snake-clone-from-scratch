@@ -10,11 +10,8 @@ try it here: https://jamesa-hunter.github.io/javascript-snake-clone-from-scratch
 ---
 
 # issues
-- rendering the scene is very very unoptimized and could be improved
-	by only redrawing the player and score point instead of the entire grid
+- no error checking on parameters
 
 ## to do
 - calculate big o' cost of gameLogic()
 - add styling to index.html
-- rework rendering system:
-	requires major changes to drawgrid() and fillGrid()
