@@ -3,29 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Javascript Game</title>
+    <title>Javascript Snake Clone</title>
     <script src="player.js"></script>
     <script src="map.js"></script>
     <script src="engine.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <nav>
+        <ul>
+            <li><a href="https://github.com/JamesA-Hunter/javascript-snake-clone-from-scratch">Github</a></li>
+        </ul>
+    </nav>
+
+<div id="wrapper">
     <form name="settings" id="parameters">
+
+    <div class="field">
         <label for="gameWidth">Width</label>
         <input type="number" id="gameWidth" value="4">
+    </div>
 
+    <div class="field">
         <label for="gameHeight">Height</label>
         <input type="number" id="gameHeight" value="4">
+    </div>
 
+    <div class="field">
         <label for="gameTileSize">Tile Size</label>
         <input type="number" id="gameTileSize" value="50">
+    </div>
 
-        <button type="button" onclick="initializeGame()">Start Button</button>
+        <button type="button" id="start" onclick="initializeGame()">Start Button</button>
     </form>
 
+    <div id="board-container">
     <canvas id="board"></canvas>
-    <button id="stop" onclick="endGame()">Stop Game</button>
-    <button id="restart" onclick="restartGame()">Restart Game</button>
-    <p id="score">Score: 0</p>
+    </div>
+
+    <div id="control">
+        <button id="stop" onclick="endGame()">Stop Game</button>
+        <button id="restart" onclick="restartGame()">Restart Game</button>
+    </div>
+
+    <div id="score">
+        <p id="score">Score: 0</p>
+    </div>
+</div>
 </body>
 </html>

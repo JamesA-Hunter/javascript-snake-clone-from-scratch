@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+html{
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+body{
+    background-color: darkgrey;
+    margin: 0%;
+    padding: 0%;
+}
+
+nav {
+    color: white;
+    width: 100%;
+    background-color: black;
+    margin-top: 0%;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
+nav ul{
+    list-style: none;
+}
+
+#wrapper{
+    width: 90%;
+    height: 90%;
+    margin: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    background-color: rgba(255, 255, 255, 0.4);
+
+}
+
+#board-container{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#control{
+    display: flex;
+    justify-content: center;
+}
+
+form{
+    padding-left: 2%;
+}
+
+.field input{
+    width: 40px;
+}
