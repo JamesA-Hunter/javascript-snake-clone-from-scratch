@@ -27,6 +27,7 @@ nav {
 
 nav ul{
     list-style: none;
+    padding: 5px;
 }
 
 #wrapper{
@@ -48,6 +49,20 @@ nav ul{
 #control{
     display: flex;
     justify-content: center;
+}
+
+#control button{
+    padding: 5px;
+}
+
+#restart{
+    margin-left: 10px;
+}
+
+#score-container{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
 }
 
 form{
