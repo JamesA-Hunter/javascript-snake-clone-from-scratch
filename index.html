@@ -14,37 +14,41 @@
     <nav>
         <ul>
             <li><a href="https://github.com/JamesA-Hunter/javascript-snake-clone-from-scratch"><img src="icons/github icon.png"></img></a></li>
+            <li>Javascript snake clone from scratch</li>
         </ul>
     </nav>
 
 <div id="wrapper">
     <form name="settings" id="parameters">
 
-    <div class="field">
-        <label for="gameWidth">Width</label>
-        <input type="number" id="gameWidth" value="4">
-    </div>
-
-    <div class="field">
-        <label for="gameHeight">Height</label>
-        <input type="number" id="gameHeight" value="4">
-    </div>
-
-    <div class="field">
-        <label for="gameTileSize">Tile Size</label>
-        <input type="number" id="gameTileSize" value="50">
-    </div>
-
-        <button type="button" id="start" onclick="initializeGame()">Start Button</button>
+        <fieldset id="fields">
+            <label for="gameWidth">Width</label>
+            <input type="number" id="gameWidth" value="4">
+        
+            <label for="gameHeight">Height</label>
+            <input type="number" id="gameHeight" value="4">
+        
+            <label for="gameTileSize">Tile Size</label>
+            <input type="number" id="gameTileSize" value="50">
+        </fieldset>
     </form>
 
     <div id="board-container">
-    <canvas id="board"></canvas>
+        <canvas id="board"></canvas>
     </div>
 
     <div id="control">
-        <button id="stop" onclick="endGame()">Stop Game</button>
-        <button id="restart" onclick="restartGame()">Restart Game</button>
+        <ul>
+            <li>
+                <button id="start" onclick="initializeGame()">Start Button</button>
+            </li>
+            <li>
+                <button id="stop" onclick="endGame()">Stop Game</button>
+            </li>
+            <li>
+                <button id="restart" onclick="restartGame()">Restart Game</button>
+            </li>
+        </ul>
     </div>
 
     <div id="score-container">
