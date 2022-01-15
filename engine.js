@@ -1,6 +1,7 @@
 let point = null;
 let score = 0;
 let end = false;
+let ended = false;
 let reset = false;
 let levelUp = false;
 let htmlScore;
@@ -8,8 +9,8 @@ let htmlScore;
 //set default parameters
 function initializeGame(){
 
-    let form = document.getElementById("parameters");
-    form.style.display = "none";
+    let form = document.getElementById("fields");
+    fields.setAttribute("disabled", "");
     htmlScore = document.getElementById("score");
     let board = document.getElementById("board"); //canvas id
     let rowWidth = document.getElementById("gameWidth").value; //how many tiles wide
@@ -17,7 +18,6 @@ function initializeGame(){
     let tileX = document.getElementById("gameTileSize").value; //pixels each tile is wide
     let tileY = document.getElementById("gameTileSize").value; //pixels each tile is tall
     let ctx = board.getContext("2d"); //canvas context for rendering
-    
 
     //parameters given to new map object
     let map = new Map(rowWidth, rowHeight);
@@ -60,14 +60,21 @@ function endGame(){
 }
 
 function restartGame(){
+    if(ended == true){
+        clearGame();
+        initializeGame();
+    }
+    else{
     endGame();
     reset = true;
+    }
 }
 
 function clearGame(){
     point = null;
     score = 0;
     end = false;
+    ended = false;
     reset = false;
     levelUp = false;
     htmlScore = 0;
@@ -183,6 +190,7 @@ function gameLoop(player, map, ctx, point){
     //draw(map, ctx); //render scene
     if(end == true){
         clearInterval(sGame);
+        ended = true;
     }
 
     if(reset == true){
