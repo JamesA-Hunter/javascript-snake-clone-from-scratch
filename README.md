@@ -11,7 +11,8 @@ try it here: https://jamesa-hunter.github.io/javascript-snake-clone-from-scratch
 
 # issues
 - no error checking on parameters
+- start button causes 2 instances of the game to be created
 
 ## to do
 - calculate big o' cost of gameLogic()
-- add styling to index.html
+- allow the game to be stopped and change parameters
