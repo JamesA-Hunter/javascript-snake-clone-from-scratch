@@ -6,8 +6,8 @@ class Player {
         this.lastPosition = position; //last position
         this.xPos;
         this.yPos;
-        this.size = 1;
-        this.positionsStack = [];
+        this.size = 1; //size of the snake
+        this.positionsStack = []; //contains all positions of each section of the snake
         this.stackQueue = [];
         this.clearStackQueue = [];
     }
@@ -17,7 +17,7 @@ class Player {
  
         this.positionsStack.push(tile);
 
-        //cleans the stack preventing a memory leak
+        //cleans the stack preventing it from indefinitely increasing
         if(this.positionsStack.length > this.size + 1){
             while(this.positionsStack.length > this.size + 1){
                 this.positionsStack.shift();
